@@ -1,0 +1,7 @@
+@import "./variables.scss";
+@import "./extend.scss";
+
+.rect {
+  @extend .box;
+  background-color: $boxColor;
+}

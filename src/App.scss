@@ -1,8 +1,10 @@
-$bg: #252931;
+@import "./variables.scss";
 
 .container {
   display: flex;
   min-height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .wrapper {
@@ -77,4 +79,7 @@ h1 {
   font-size: 50px;
   font-family: "Merriweather", serif;
   max-width: 700px;
+}
+
+.box {
 }
