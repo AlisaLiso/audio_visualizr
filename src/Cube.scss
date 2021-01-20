@@ -1,0 +1,245 @@
+$boxFillColor: hsl(hue(#ea4f67), 100%, 28.8%);
+$boxSubFillColor: hsl(hue(#ea4f67), 50%, 28.8%);
+$boxColor: rgba(#d1d7db, 0.1);
+
+// Box size
+$boxBigWidth: 300px;
+$boxBigHeight: 200px;
+$boxSmallHeight: 100px;
+
+$fillScale: 0.3;
+$fillSubScale: 0.4;
+
+.loader {
+  width: $boxBigWidth;
+  height: $boxBigHeight;
+  transform-style: preserve-3d;
+  transform: rotateX(-15deg) rotateY(-15deg);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  margin: 40px;
+
+  // &:hover {
+  //   transform: rotateX(-25deg) rotateY(45deg) translateY(-15px);
+
+  //   .bottom {
+  //     box-shadow: -22px -22px 30px 0 rgba(0, 0, 0, 0.4);
+  //   }
+  // }
+}
+
+.loader.show-front {
+  transform: translateZ(-$boxSmallHeight / 2) rotateY(0deg);
+}
+.loader.show-back {
+  transform: translateZ(-$boxSmallHeight / 2) rotateY(-180deg);
+}
+.loader.show-right {
+  transform: translateZ(-$boxBigWidth / 2) rotateY(-90deg);
+}
+.loader.show-left {
+  transform: translateZ(-$boxBigWidth / 2) rotateY(90deg);
+}
+.loader.show-top {
+  transform: translateZ(-$boxSmallHeight) rotateX(-90deg);
+}
+.loader.show-bottom {
+  transform: translateZ(-$boxSmallHeight) rotateX(90deg);
+}
+
+.panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid $boxColor;
+  background: $boxColor;
+  color: white;
+  font-size: 32px;
+  justify-content: center;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+}
+
+.bottom {
+  transform: rotateX(-90deg) translateZ($boxSmallHeight);
+  background: $boxFillColor;
+}
+
+.panel.front,
+.panel.back {
+  width: $boxBigWidth;
+  height: $boxBigHeight;
+}
+
+.panel.right,
+.panel.left {
+  width: $boxSmallHeight;
+  height: $boxBigHeight;
+  left: $boxSmallHeight;
+}
+
+.panel.top,
+.panel.sub-top,
+.panel.bottom {
+  width: $boxBigWidth;
+  height: $boxSmallHeight;
+  top: $boxSmallHeight / 2;
+}
+
+.top {
+  transform: rotateX(90deg) translateZ($boxSmallHeight);
+  opacity: 0.5;
+}
+
+.sub-top {
+  transform: rotateX(90deg) translateZ(-20px);
+  background-color: $boxSubFillColor;
+  // transform: translateZ(100px);
+}
+
+.left {
+  transform: rotateY(-90deg) translateZ($boxBigWidth / 2);
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $boxSubFillColor;
+    transform-origin: 50% 100%;
+    transform: scaleY($fillSubScale);
+
+    // animation: fill 4s ease-in-out infinite alternate;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $boxFillColor;
+    transform-origin: 50% 100%;
+    transform: scaleY($fillScale);
+    // animation: fill 4s ease-in-out infinite alternate;
+  }
+}
+
+.right {
+  transform: rotateY(90deg) translateZ($boxBigWidth / 2);
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $boxSubFillColor;
+    transform-origin: 50% 100%;
+    transform: scaleY($fillSubScale);
+    // animation: fill 4s ease-in-out infinite alternate;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $boxFillColor;
+    transform-origin: 50% 100%;
+    transform: scaleY($fillScale);
+    // animation: fill 4s ease-in-out infinite alternate;
+  }
+}
+
+.back {
+  transform: rotateY(180deg) translateZ($boxSmallHeight / 2);
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $boxSubFillColor;
+    transform-origin: 50% 100%;
+    transform: scaleY($fillSubScale);
+    // animation: fill 4s ease-in-out infinite alternate;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $boxFillColor;
+    transform-origin: 50% 100%;
+    transform: scaleY($fillScale);
+    // animation: fill 4s ease-in-out infinite alternate;
+  }
+}
+
+.front {
+  transform: rotateY(0deg) translateZ($boxSmallHeight / 2);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $boxSubFillColor;
+    transform-origin: 50% 100%;
+    transform: scaleY($fillSubScale);
+    // animation: fill 4s ease-in-out infinite alternate;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $boxFillColor;
+    transform-origin: 50% 100%;
+    transform: scaleY($fillScale);
+    // animation: fill 4s ease-in-out infinite alternate;
+  }
+}
+
+.fill-top {
+  background: $boxFillColor;
+  transform: scaleY(0);
+  // animation: fill-top 4s ease-in-out infinite alternate;
+}
+
+@keyframes fill {
+  0%,
+  25% {
+    transform: scaleY(0);
+  }
+  75%,
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes fill-top {
+  0%,
+  25% {
+    transform: rotateX(90deg) translateZ($boxSmallHeight / -2);
+  }
+  75%,
+  100% {
+    transform: rotateX(90deg) translateZ(($boxSmallHeight / 2) -1);
+  }
+}
